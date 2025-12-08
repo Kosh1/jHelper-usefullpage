@@ -31,7 +31,8 @@ dist-ssr
 # Python files (if not needed in repo)
 *.pyc
 __pycache__/
-extracted_images/
+# Ignore extracted_images in root, but keep public/extracted_images
+/extracted_images/
 *.pptx
 
 # Build outputs
