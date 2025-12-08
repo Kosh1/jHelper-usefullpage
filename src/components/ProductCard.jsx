@@ -30,27 +30,31 @@ const ProductCard = ({ product, examplesData }) => {
 
       <p className="product-description">{product.description}</p>
 
-      {product.features && product.features.length > 0 && (
-        <div className="product-section">
-          <h4>Преимущества:</h4>
-          <ul className="feature-list">
-            {product.features.map((feature, idx) => (
-              <li key={idx}>✓ {feature}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {(product.features && product.features.length > 0) || (product.disadvantages && product.disadvantages.length > 0) ? (
+        <div className="product-features-wrapper">
+          {product.features && product.features.length > 0 && (
+            <div className="product-section">
+              <h4>Преимущества:</h4>
+              <ul className="feature-list">
+                {product.features.map((feature, idx) => (
+                  <li key={idx}>✓ {feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-      {product.disadvantages && product.disadvantages.length > 0 && (
-        <div className="product-section">
-          <h4>Недостатки:</h4>
-          <ul className="disadvantage-list">
-            {product.disadvantages.map((dis, idx) => (
-              <li key={idx}>⚠ {dis}</li>
-            ))}
-          </ul>
+          {product.disadvantages && product.disadvantages.length > 0 && (
+            <div className="product-section">
+              <h4>Недостатки:</h4>
+              <ul className="disadvantage-list">
+                {product.disadvantages.map((dis, idx) => (
+                  <li key={idx}>⚠ {dis}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-      )}
+      ) : null}
 
       {product.useCases && product.useCases.length > 0 && (
         <div className="product-section">
