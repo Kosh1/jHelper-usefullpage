@@ -5,8 +5,25 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
+  max-width: 100%;
+}
+
+/* На больших экранах (ноутбуки) - карточки на всю ширину */
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* На средних экранах (планшеты) - ограничиваем ширину карточек */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .products-grid {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -21,6 +38,11 @@
   .products-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: 100%;
+  }
+
+  .product-card {
+    max-width: 100%;
   }
 }
 
