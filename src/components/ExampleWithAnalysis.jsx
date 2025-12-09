@@ -79,7 +79,10 @@ const ExampleWithAnalysis = ({ example }) => {
                   src={example.resultImage} 
                   alt="Результат запроса"
                   loading="lazy"
-                  onClick={() => openModal(example.resultImage)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openModal(example.resultImage);
+                  }}
                   className="clickable-image"
                   onError={(e) => {
                     const placeholder = e.target.nextElementSibling;
@@ -94,13 +97,16 @@ const ExampleWithAnalysis = ({ example }) => {
                   <p className="image-path">{example.resultImage}</p>
                 </div>
               </div>
-              {example.resultImage2 && (
+              {example.resultImage2 && example.resultImage2 !== example.resultImage && (
                 <div className="result-image-wrapper">
                   <img 
                     src={example.resultImage2} 
                     alt="Результат запроса (часть 2)"
                     loading="lazy"
-                    onClick={() => openModal(example.resultImage2)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openModal(example.resultImage2);
+                    }}
                     className="clickable-image"
                     onError={(e) => {
                       const placeholder = e.target.nextElementSibling;
@@ -123,10 +129,13 @@ const ExampleWithAnalysis = ({ example }) => {
 
       {modalImage && (
         <div className="image-modal-overlay" onClick={closeModal}>
-          <div className="image-modal-content">
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
             <button 
               className="image-modal-close" 
-              onClick={() => setModalImage(null)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setModalImage(null);
+              }}
               aria-label="Закрыть"
             >
               ×
@@ -135,6 +144,7 @@ const ExampleWithAnalysis = ({ example }) => {
               src={modalImage} 
               alt="Увеличенное изображение"
               className="image-modal-img"
+              onClick={(e) => e.stopPropagation()}
             />
           </div>
         </div>
