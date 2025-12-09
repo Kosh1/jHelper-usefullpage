@@ -254,6 +254,8 @@
   animation: fadeIn 0.2s ease;
   cursor: pointer;
   will-change: opacity;
+  touch-action: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes fadeIn {
@@ -274,6 +276,9 @@
   justify-content: center;
   cursor: default;
   pointer-events: auto;
+  margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .image-modal-close {
@@ -302,7 +307,7 @@
 }
 
 .image-modal-img {
-  max-width: 100%;
+  max-width: 95vw;
   max-height: 95vh;
   width: auto;
   height: auto;
@@ -315,15 +320,25 @@
   will-change: auto;
   transform: none !important;
   scale: 1 !important;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  object-fit: contain;
+  margin: auto;
+  display: block;
 }
 
 .image-modal-img:hover,
 .image-modal-img:focus,
-.image-modal-img:active {
+.image-modal-img:active,
+.image-modal-img:focus-visible {
   transform: none !important;
   scale: 1 !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
   opacity: 1 !important;
+  outline: none !important;
 }
 
 @keyframes zoomIn {

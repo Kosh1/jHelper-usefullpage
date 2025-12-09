@@ -139,6 +139,10 @@ const ExampleWithAnalysis = ({ example }) => {
               alt="Увеличенное изображение"
               className="image-modal-img"
               onClick={(e) => e.stopPropagation()}
+              onDragStart={(e) => e.preventDefault()}
+              onContextMenu={(e) => e.preventDefault()}
+              draggable="false"
+              style={{ userSelect: 'none', WebkitUserDrag: 'none' }}
             />
           </div>
         </div>
