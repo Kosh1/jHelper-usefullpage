@@ -27,7 +27,7 @@ def extract_pptx_text(pptx_path):
 
 # Использование
 if __name__ == "__main__":
-    pptx_file = "Нейросети для адвокатов V1.pptx"
+    pptx_file = "Нейросети для адвокатов V1.5.pptx"
     
     try:
         data = extract_pptx_text(pptx_file)

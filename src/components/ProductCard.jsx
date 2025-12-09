@@ -67,6 +67,12 @@ const ProductCard = ({ product, examplesData }) => {
         </div>
       )}
 
+      {product.conclusion && (
+        <div className="product-conclusion">
+          <strong>Вывод:</strong> {product.conclusion}
+        </div>
+      )}
+
       {product.pricing && (
         <div className="product-pricing">
           <strong>Стоимость:</strong> {product.pricing}
