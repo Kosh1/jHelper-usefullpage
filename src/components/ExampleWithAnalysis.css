@@ -197,9 +197,31 @@
   cursor: pointer;
 }
 
+/* Убираем hover эффект scale - он конфликтует с модальным окном */
 .result-image-wrapper img.clickable-image:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+}
+
+/* Отключаем все hover эффекты и transitions в модальном окне */
+.image-modal-overlay {
+  pointer-events: auto;
+}
+
+.image-modal-overlay * {
+  transition: none !important;
+}
+
+.image-modal-overlay img {
+  pointer-events: none !important;
+}
+
+.image-modal-overlay img:hover,
+.image-modal-overlay img:focus,
+.image-modal-overlay img:active {
+  transform: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+  scale: 1 !important;
 }
 
 .image-placeholder {
@@ -231,6 +253,7 @@
   padding: 2rem;
   animation: fadeIn 0.2s ease;
   cursor: pointer;
+  will-change: opacity;
 }
 
 @keyframes fadeIn {
@@ -250,6 +273,7 @@
   align-items: center;
   justify-content: center;
   cursor: default;
+  pointer-events: auto;
 }
 
 .image-modal-close {
@@ -285,6 +309,21 @@
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   animation: zoomIn 0.3s ease;
+  pointer-events: none;
+  cursor: default;
+  transition: none !important;
+  will-change: auto;
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.image-modal-img:hover,
+.image-modal-img:focus,
+.image-modal-img:active {
+  transform: none !important;
+  scale: 1 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
 }
 
 @keyframes zoomIn {
