@@ -136,8 +136,19 @@
   gap: 1rem;
 }
 
+/* Если только одно изображение - на всю ширину */
+.result-images.has-one-image {
+  grid-template-columns: 1fr;
+}
+
+/* Если два изображения - в две колонки на больших экранах */
+.result-images.has-two-images {
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
 @media (min-width: 768px) {
-  .result-images {
+  .result-images.has-two-images {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }

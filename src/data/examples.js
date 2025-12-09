@@ -20,8 +20,7 @@ export const examples = {
           'Просите добавить риски - это помогает увидеть полную картину'
         ]
       },
-      resultImage: '/extracted_images/slide_7_img_1.png',
-      resultImage2: '/extracted_images/slide_8_img_2.png'
+      resultImage: '/extracted_images/slide_7_img_1.png'
     }
   ],
   chatgpt: [

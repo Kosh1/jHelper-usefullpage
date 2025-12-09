@@ -73,16 +73,13 @@ const ExampleWithAnalysis = ({ example }) => {
         {example.resultImage && (
           <div className="example-result">
             <h5>Результат выполнения запроса:</h5>
-            <div className="result-images">
+            <div className={`result-images ${example.resultImage2 && example.resultImage2 !== example.resultImage ? 'has-two-images' : 'has-one-image'}`}>
               <div className="result-image-wrapper">
                 <img 
                   src={example.resultImage} 
                   alt="Результат запроса"
                   loading="lazy"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    openModal(example.resultImage);
-                  }}
+                  onClick={() => openModal(example.resultImage)}
                   className="clickable-image"
                   onError={(e) => {
                     const placeholder = e.target.nextElementSibling;
@@ -103,10 +100,7 @@ const ExampleWithAnalysis = ({ example }) => {
                     src={example.resultImage2} 
                     alt="Результат запроса (часть 2)"
                     loading="lazy"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openModal(example.resultImage2);
-                    }}
+                    onClick={() => openModal(example.resultImage2)}
                     className="clickable-image"
                     onError={(e) => {
                       const placeholder = e.target.nextElementSibling;
