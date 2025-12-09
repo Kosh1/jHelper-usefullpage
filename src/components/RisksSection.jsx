@@ -7,7 +7,7 @@ const RisksSection = () => {
       <div className="container">
         <div className="section-header">
           <h2>Риски и правила</h2>
-          <p>Три риска → три правила для безопасной работы с ИИ</p>
+          <p>Три риска — три правила для безопасной работы с ИИ</p>
         </div>
         <div className="risks-grid">
           {risks.map((risk, idx) => (

@@ -9,7 +9,7 @@ const ProductsSection = () => {
       <div className="container">
         <div className="section-header">
           <h2>Обзор инструментов</h2>
-          <p>Выберите инструмент, который поможет оптимизировать вашу работу</p>
+          <p>Выберите инструмент для оптимизации работы</p>
         </div>
         <div className="products-grid">
           {products.map((product) => (

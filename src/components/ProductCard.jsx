@@ -37,7 +37,7 @@ const ProductCard = ({ product, examplesData }) => {
               <h4>Преимущества:</h4>
               <ul className="feature-list">
                 {product.features.map((feature, idx) => (
-                  <li key={idx}>✓ {feature}</li>
+                  <li key={idx}>{feature}</li>
                 ))}
               </ul>
             </div>
@@ -48,7 +48,7 @@ const ProductCard = ({ product, examplesData }) => {
               <h4>Недостатки:</h4>
               <ul className="disadvantage-list">
                 {product.disadvantages.map((dis, idx) => (
-                  <li key={idx}>⚠ {dis}</li>
+                  <li key={idx}>{dis}</li>
                 ))}
               </ul>
             </div>

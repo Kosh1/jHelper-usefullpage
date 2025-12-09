@@ -21,7 +21,7 @@
 
 .product-name {
   font-size: 1.75rem;
-  color: var(--accent-green);
+  color: #2563eb;
   margin-bottom: 0.5rem;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -44,8 +44,8 @@
 
 .product-category {
   display: inline-block;
-  background: var(--muted);
-  color: var(--muted-foreground);
+  background: #f5f5f5;
+  color: #666666;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -122,21 +122,48 @@
   padding: 0.5rem 0;
   color: var(--muted-foreground);
   font-weight: 400;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.feature-list li::before {
+  content: '✓';
+  color: #22c55e;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
 .disadvantage-list li {
   padding: 0.5rem 0;
   color: var(--muted-foreground);
   font-weight: 400;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.disadvantage-list li::before {
+  content: '⚠';
+  color: #666666;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
 .product-pricing {
   padding: 1rem;
-  background: var(--muted);
+  background: #f5f5f5;
   border-radius: var(--radius);
   margin-bottom: 1rem;
   color: var(--foreground);
   font-weight: 400;
+}
+
+.product-pricing strong {
+  font-weight: 600;
+  margin-right: 0.5rem;
 }
 
 .product-examples {

@@ -7,7 +7,7 @@ const ROISection = () => {
       <div className="container">
         <div className="section-header">
           <h2>Экономика и ROI</h2>
-          <p>Реальная экономия времени и средств</p>
+          <p>Экономия времени и средств</p>
         </div>
         <div className="roi-content">
           <div className="roi-comparison">
@@ -65,7 +65,7 @@ const ROISection = () => {
           </div>
 
           <div className="roi-benefits">
-            <h3>Дополнительные преимущества:</h3>
+            <h3>Дополнительные преимущества</h3>
             <ul>
               {roiData.benefits.map((benefit, idx) => (
                 <li key={idx}>✓ {benefit}</li>

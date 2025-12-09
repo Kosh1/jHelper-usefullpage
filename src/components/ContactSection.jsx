@@ -7,7 +7,7 @@ const ContactSection = () => {
       <div className="container">
         <div className="section-header">
           <h2>Дополнительные ресурсы</h2>
-          <p>Полезные ссылки и контакты для получения дополнительной информации</p>
+          <p>Полезные ссылки и контакты</p>
         </div>
         <div className="contact-content">
           <div className="contact-info">
@@ -33,7 +33,7 @@ const ContactSection = () => {
                 <span className="contact-icon">📅</span>
                 <div>
                   <strong>Calendly</strong>
-                  <p>Записаться на консультацию</p>
+                  <p>Запись на консультацию</p>
                 </div>
               </a>
             </div>
