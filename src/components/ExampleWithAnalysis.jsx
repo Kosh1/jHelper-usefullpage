@@ -1,36 +1,54 @@
-import { useState, useEffect } from 'react';
 import './ExampleWithAnalysis.css';
 
 const ExampleWithAnalysis = ({ example }) => {
-  const [modalImage, setModalImage] = useState(null);
-
-  // Закрытие модального окна по ESC
-  useEffect(() => {
+  const openFullscreen = (e) => {
+    const img = e.target;
+    
+    // Создаем контейнер для fullscreen
+    const container = document.createElement('div');
+    container.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      cursor: pointer;
+    `;
+    
+    const fullscreenImg = document.createElement('img');
+    fullscreenImg.src = img.src;
+    fullscreenImg.alt = img.alt;
+    fullscreenImg.style.cssText = `
+      max-width: 100%;
+      max-height: 100vh;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    `;
+    
+    container.appendChild(fullscreenImg);
+    document.body.appendChild(container);
+    
+    // Закрытие по клику
+    const closeFullscreen = () => {
+      document.body.removeChild(container);
+      document.removeEventListener('keydown', handleEscape);
+    };
+    
+    container.addEventListener('click', closeFullscreen);
+    
+    // Закрытие по ESC
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        setModalImage(null);
+        closeFullscreen();
       }
     };
-
-    if (modalImage) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [modalImage]);
-
-  const openModal = (imageSrc) => {
-    setModalImage(imageSrc);
-  };
-
-  const closeModal = (e) => {
-    if (e.target === e.currentTarget) {
-      setModalImage(null);
-    }
+    document.addEventListener('keydown', handleEscape);
   };
 
   return (
@@ -79,7 +97,7 @@ const ExampleWithAnalysis = ({ example }) => {
                   src={example.resultImage} 
                   alt="Результат запроса"
                   loading="lazy"
-                  onClick={() => openModal(example.resultImage)}
+                  onClick={openFullscreen}
                   className="clickable-image"
                   onError={(e) => {
                     const placeholder = e.target.nextElementSibling;
@@ -100,7 +118,7 @@ const ExampleWithAnalysis = ({ example }) => {
                     src={example.resultImage2} 
                     alt="Результат запроса (часть 2)"
                     loading="lazy"
-                    onClick={() => openModal(example.resultImage2)}
+                    onClick={openFullscreen}
                     className="clickable-image"
                     onError={(e) => {
                       const placeholder = e.target.nextElementSibling;
@@ -120,33 +138,6 @@ const ExampleWithAnalysis = ({ example }) => {
           </div>
         )}
       </div>
-
-      {modalImage && (
-        <div className="image-modal-overlay" onClick={closeModal}>
-          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="image-modal-close" 
-              onClick={(e) => {
-                e.stopPropagation();
-                setModalImage(null);
-              }}
-              aria-label="Закрыть"
-            >
-              ×
-            </button>
-            <img 
-              src={modalImage} 
-              alt="Увеличенное изображение"
-              className="image-modal-img"
-              onClick={(e) => e.stopPropagation()}
-              onDragStart={(e) => e.preventDefault()}
-              onContextMenu={(e) => e.preventDefault()}
-              draggable="false"
-              style={{ userSelect: 'none', WebkitUserDrag: 'none' }}
-            />
-          </div>
-        </div>
-      )}
     </>
   );
 };
